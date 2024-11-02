@@ -5,9 +5,9 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { IoSearch } from "react-icons/io5";
 import { ID } from "country-flag-icons/react/3x2";
 
-export default function Header() {
+const Header = () => {
   return (
-    <section className="text-white py-4 space-y-4 font-['Space_Grotesk']">
+    <section className="py-4 space-y-4 font-['Space_Grotesk']">
       <div className="mx-auto max-w-7xl flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <div className="grid grid-cols-3 w-12">
@@ -51,3 +51,5 @@ export default function Header() {
     </section>
   );
 }
+
+export default Header;

@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Top Up Games",
   description: "Top Up Games",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en">
-      <body className="flex flex-col items-center min-h-screen">
+      <body className="text-white flex flex-col items-center min-h-screen">
         <header className="sticky top-0 z-50 bg-[#282828] w-full">
           <Header />
         </header>
@@ -28,4 +28,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

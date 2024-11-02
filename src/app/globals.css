@@ -5,7 +5,27 @@
 @tailwind utilities;
 
 .bg-home-img {
-  background-image: url("/assets/images/backgrounds/thumb-1920-1319219.jpeg");
+  background-image: url("/assets/images/backgrounds/thumb-1920-1319219.webp");
   background-size: cover;
   background-position: center;
+}
+
+.bg-home-gardient {
+  background-image: url("/assets/images/backgrounds/gradient-rectangle.svg");
+  background-size: cover; 
+  background-position: center;
+}
+
+.bg-home-wave {
+  background-image: url("/assets/images/graphics/wavy.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+}
+
+.bg-home-card-gardient {
+  background-image: linear-gradient(90deg, #282828 0%, #666666 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
 }

@@ -1,48 +1,11 @@
 import Link from "next/link";
+import { siteMap, otherTopUp } from "@/data/footer-links";
 import { Divider } from "antd";
 import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 
-const siteMap = [
-  {
-    title: "Beranda",
-    link: "/",
-  },
-  {
-    title: "Semua Game",
-    link: "/",
-  },
-  {
-    title: "Masuk",
-    link: "/",
-  },
-  {
-    title: "Daftar",
-    link: "/",
-  },
-];
-
-const otherTopUp = [
-  {
-    title: "Mobile Legends",
-    link: "/",
-  },
-  {
-    title: "Free Fire",
-    link: "/",
-  },
-  {
-    title: "Pubg Mobile",
-    link: "/",
-  },
-  {
-    title: "Undawn",
-    link: "/",
-  },
-];
-
-export default function Footer() {
+const Footer = () => {
   return (
-    <section className="mx-auto max-w-7xl text-white font-['Space_Grotesk'] pt-10 pb-4">
+    <section className="mx-auto max-w-7xl font-['Space_Grotesk'] pt-10 pb-4">
       <div className="grid grid-cols-12 gap-x-14 mb-10 justify-between pb-3">
         <div className="col-span-5">
           <h2>Ur Website</h2>
@@ -67,13 +30,13 @@ export default function Footer() {
           <h3 className="font-bold text-sm mb-3">IKUTI KAMI</h3>
           <div className="flex space-x-3">
             <div className="bg-[#3E3E3E] p-2 rounded-full">
-              <FaInstagram className="text-white" />
+              <FaInstagram />
             </div>
             <div className="bg-[#3E3E3E] p-2 rounded-full">
-              <FaTiktok className="text-white" />
+              <FaTiktok />
             </div>
             <div className="bg-[#3E3E3E] p-2 rounded-full">
-              <FaYoutube className="text-white" />
+              <FaYoutube />
             </div>
           </div>
           <div className="mt-8 space-y-2">
@@ -96,3 +59,5 @@ export default function Footer() {
     </section>
   );
 }
+
+export default Footer;
