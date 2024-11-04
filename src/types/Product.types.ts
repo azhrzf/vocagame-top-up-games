@@ -23,3 +23,7 @@ export interface ProductItem extends ProductMeta {
 export interface Product extends ProductMeta {
   items: Item[];
 }
+
+export interface ProductList {
+  products: Product[];
+}

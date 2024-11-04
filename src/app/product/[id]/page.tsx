@@ -5,15 +5,16 @@ import { useParams } from "next/navigation";
 import { useProductsStore } from "@/stores/useProductsStore";
 import { Product } from "@/types/Product.types";
 import ScreenContainer from "@/components/layout/ScreenContainer";
-import ProductBanner from "@/components/feature/ProductDetailSection/ProductBanner";
-import ItemCurrencyButton from "@/components/feature/ProductDetailSection/ProductItems/ItemCurrencyButton";
-import ItemsBanner from "@/components/feature/ProductDetailSection/ProductItems/ItemsBanner";
-import ItemCard from "@/components/feature/ProductDetailSection/ProductItems/ItemCard";
-import UserFormBanner from "@/components/feature/ProductDetailSection/PaymentData/UserFormBanner";
-import UserForm from "@/components/feature/ProductDetailSection/PaymentData/UserForm";
-import PromoSection from "@/components/feature/ProductDetailSection/PaymentData/PromoSection";
-import PaymentMethods from "@/components/feature/ProductDetailSection/PaymentMethods";
+import ProductBanner from "@/components/feature/ProductSection/ProductBanner";
+import ItemCurrencyButton from "@/components/feature/ProductSection/ProductItems/ItemCurrencyButton";
+import ItemsBanner from "@/components/feature/ProductSection/ProductItems/ItemsBanner";
+import ItemCard from "@/components/feature/ProductSection/ProductItems/ItemCard";
+import UserFormBanner from "@/components/feature/ProductSection/PaymentData/UserFormBanner";
+import UserForm from "@/components/feature/ProductSection/PaymentData/UserForm";
+import PromoSection from "@/components/feature/ProductSection/PaymentData/PromoSection";
+import PaymentMethods from "@/components/feature/ProductSection/PaymentMethods";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 import { Divider } from "antd";
 
 const ProductDetailPage = () => {
@@ -22,7 +23,7 @@ const ProductDetailPage = () => {
   const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
   const [selectedItemId, setSelectedItemId] = useState("");
 
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("QRIS");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
 
   useEffect(() => {
     if (products.length > 0) {
@@ -36,7 +37,7 @@ const ProductDetailPage = () => {
   }, [products, productId]);
 
   return (
-    <div className="bg-[#1A1A1A] flex-grow pb-20">
+    <section className="bg-[#1A1A1A] flex-grow pb-20">
       <div className="h-[41rem] lg:h-52 bg-product-detail-background-gardient mb-auto"></div>
       <ProductBanner product={currentProduct} />
       <ScreenContainer className="mx-auto mt-10">
@@ -114,7 +115,7 @@ const ProductDetailPage = () => {
           </div>
         </SkeletonTheme>
       </ScreenContainer>
-    </div>
+    </section>
   );
 };
 
