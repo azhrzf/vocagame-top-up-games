@@ -29,6 +29,7 @@ const FlashSaleCard = ({ product }: FlashSaleCardProps) => {
           width={56}
           height={56}
           className="rounded-xl"
+          objectFit="cover"
           src={imgSrc}
           onError={handleImageError}
           alt={name}

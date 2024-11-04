@@ -1,11 +1,18 @@
-import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
+import dynamic from "next/dynamic";
 import "@leenguyen/react-flip-clock-countdown/dist/index.css";
 
-interface DateCountdown {
+const FlipClockCountdown = dynamic(
+  () => import("@leenguyen/react-flip-clock-countdown"),
+  {
+    ssr: false,
+  }
+);
+
+interface DateCountdownProps {
   dateCountdown: Date;
 }
 
-const DateCountdown = ({ dateCountdown }: DateCountdown) => {
+const DateCountdown = ({ dateCountdown }: DateCountdownProps) => {
   return (
     <div className="space-y-3">
       <div className="space-x-3 flex items-center">

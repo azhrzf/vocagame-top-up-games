@@ -20,16 +20,19 @@ const LargeMethodCard = ({
         selected && "border border-white"
       )}
     >
-      <Image
-        src={`/assets/images/payments/${item.image}`}
-        alt={item.name}
-        width={64}
-        height={64}
-      />
-      <div>
+      {item.image && (
+        <Image
+          src={`/assets/images/payments/${item.image}`}
+          alt={item.name}
+          width={64}
+          height={64}
+          className="w-full rounded-lg"
+        />
+      )}
+      <div className="text-start">
         <p className="font-semibold">{item.name}</p>
         <p className="text-[#949494] text-sm">Biaya Layanan</p>
-        <p className="text-semibold">+ Rp {formatPrice(item.servicePrice)},-</p>
+        <p className="text-semibold">+ Rp {formatPrice(item.serviceFee)},-</p>
       </div>
       {selected && (
         <div className="absolute bottom-0 right-0 text-[#3E3E3E] bg-white p-1 rounded-tl-xl rounded-br-xl">

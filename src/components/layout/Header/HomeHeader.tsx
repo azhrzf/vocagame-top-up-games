@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ScreenContainer from "../ScreenContainer";
 import BrandLogo from "../BrandLogo";
 import { Divider } from "antd";
@@ -11,10 +12,10 @@ const HomeHeader = () => {
   return (
     <section className="py-4 space-y-4 font-['Space_Grotesk']">
       <ScreenContainer className="mx-auto flex items-center justify-between">
-        <div className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2">
           <BrandLogo color="white" />
           <h1 className="font-bold">GameManiac</h1>
-        </div>
+        </Link>
         <div className="flex items-center space-x-4">
           <IoSearch />
           <div className="space-x-4">
@@ -36,14 +37,14 @@ const HomeHeader = () => {
       <Divider className="border-[#3E3E3E]" />
       <ScreenContainer className="mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <AiOutlineHome />
-            <a className="text-sm">Beranda</a>
-          </div>
-          <div className="flex items-center space-x-2">
+            <p className="text-sm">Beranda</p>
+          </Link>
+          <Link href="/track-order" className="flex items-center space-x-2">
             <IoIosSearch />
-            <a className="text-sm">Lacak Pesanan</a>
-          </div>
+            <p className="text-sm">Lacak Pesanan</p>
+          </Link>
         </div>
         <MdKeyboardDoubleArrowRight />
       </ScreenContainer>

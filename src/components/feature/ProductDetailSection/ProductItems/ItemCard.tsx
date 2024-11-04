@@ -50,9 +50,13 @@ const ItemCard = ({ selected = false, ...item }: ItemCardProps) => {
               </p>
             )}
           </div>
-          <div className="w-6 h-6 lg:w-8 lg:h-8">
-            <Image src={imgSrc} onError={handleImageError} alt={name} />
-          </div>
+          <Image
+            src={imgSrc}
+            width={24}
+            height={24}
+            onError={handleImageError}
+            alt={name}
+          />
         </div>
       </div>
       {selected && (

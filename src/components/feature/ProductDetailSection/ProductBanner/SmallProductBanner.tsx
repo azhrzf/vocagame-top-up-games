@@ -12,7 +12,7 @@ interface SmallProductBannerProps {
 }
 
 const SmallProductBanner = ({ product }: SmallProductBannerProps) => {
-  const [imgSrc, setImgSrc] = useState("");
+  const [imgSrc, setImgSrc] = useState("/assets/images/backgrounds/bg-handler.webp");
 
   useEffect(() => {
     if (product) {
@@ -21,7 +21,7 @@ const SmallProductBanner = ({ product }: SmallProductBannerProps) => {
   }, [product]);
 
   const handleImageError = () => {
-    setImgSrc("/assets/images/backgrounds/thumb-1920-1319219.webp");
+    setImgSrc("/assets/images/backgrounds/bg-handler.webp");
   };
 
   return (

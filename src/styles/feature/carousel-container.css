@@ -19,13 +19,13 @@
 }
 
 .embla__xtra__slide:first-child {
-  margin-left: 1.5rem;
+  margin-left: 1.5rem !important;
 }
 
 .embla__xtra__slide:not(:first-child) {
-  margin-left: 1rem;
+  margin-left: 1rem !important;
 }
 
 .embla__xtra__slide:last-child {
-  margin-right: 1.5rem;
+  margin-right: 1.5rem !important;
 }

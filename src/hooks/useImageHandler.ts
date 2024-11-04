@@ -4,7 +4,7 @@ const useImageHandler = (initialSrc: string) => {
   const [imgSrc, setImgSrc] = useState(initialSrc);
 
   const handleImageError = () => {
-    setImgSrc("/assets/images/backgrounds/thumb-1920-1319219.webp");
+    setImgSrc("/assets/images/backgrounds/bg-handler.webp");
   };
 
   return { imgSrc, handleImageError };

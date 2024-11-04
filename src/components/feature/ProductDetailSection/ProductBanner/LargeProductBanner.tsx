@@ -12,7 +12,7 @@ interface LargeProductBannerProps {
 }
 
 const LargeProductBanner = ({ product }: LargeProductBannerProps) => {
-  const [imgSrc, setImgSrc] = useState("");
+  const [imgSrc, setImgSrc] = useState("/assets/images/backgrounds/bg-handler.webp");
 
   useEffect(() => {
     if (product) {
@@ -27,7 +27,7 @@ const LargeProductBanner = ({ product }: LargeProductBannerProps) => {
   const { name, publisher } = product;
 
   const handleImageError = () => {
-    setImgSrc("/assets/images/backgrounds/thumb-1920-1319219.webp");
+    setImgSrc("/assets/images/backgrounds/bg-handler.webp");
   };
 
   return (

@@ -21,12 +21,12 @@ const HomePage = () => {
           <div className="pt-16">
             <EmblaCarousel slides={slides} options={OPTIONS} />
           </div>
-          {/* <div className="bg-home-wave mb-auto pb-40 space-y-10">
+          <div className="bg-home-wave mb-auto pb-40 space-y-10">
             <FlashSale
               products={products}
               dateCountdown={new Date("2025-12-31T23:59:59")}
             />
-          </div> */}
+          </div>
         </div>
       </div>
       <div className="-mt-1 bg-[#1E1E1E] py-14">

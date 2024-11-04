@@ -1,17 +1,19 @@
+import Link from "next/link";
 import Image from "next/image";
 import useImageHandler from "@/hooks/useImageHandler";
 import { trimWords } from "@/utils/helpers";
 import { Product } from "@/types/Product.types";
 
-const GameListCard = ({ name, publisher, image }: Product) => {
+const GameListCard = ({ id, name, publisher, image }: Product) => {
   const { imgSrc, handleImageError } = useImageHandler(image);
 
   return (
-    <div className="grid grid-cols-1 grid-rows-3 ">
+    <Link href={`/product/${id}`} className="grid grid-cols-1 grid-rows-3 ">
       <div className="flex justify-center row-start-1 row-end-3 z-10 col-start-1 col-end-2">
         <div className="rounded-xl h-32 w-32 p-0.5 border border-white">
           <Image
-            fill={true}
+            height={125}
+            width={125}
             src={imgSrc}
             onError={handleImageError}
             className="rounded-xl h-full w-full object-cover"
@@ -27,7 +29,7 @@ const GameListCard = ({ name, publisher, image }: Product) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

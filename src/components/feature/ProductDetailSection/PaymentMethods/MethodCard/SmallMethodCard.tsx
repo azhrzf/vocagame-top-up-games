@@ -20,20 +20,25 @@ const SmallMethodCard = ({
         selected && "border border-white"
       )}
     >
-      <Image
-        src={`/assets/images/payments/${item.image}`}
-        width={48}
-        height={48}
-        alt={item.name}
-      />
-      <div>
-        <p className="font-semibold">{item.name}</p>
-        <p className="text-xs">
-          <span className="text-[#949494]">Biaya Layanan: </span>
-          <span className="text-semibold">
-            + Rp {formatPrice(item.servicePrice)},-
-          </span>
-        </p>
+      <div className="flex items-center space-x-3">
+        {item.image && (
+          <Image
+            src={`/assets/images/payments/${item.image}`}
+            width={64}
+            height={64}
+            alt={item.name}
+            className="rounded-lg"
+          />
+        )}
+        <div className="text-start">
+          <p className="font-semibold">{item.name}</p>
+          <p className="text-xs">
+            <span className="text-[#949494]">Biaya Layanan: </span>
+            <span className="text-semibold">
+              + Rp {formatPrice(item.serviceFee)},-
+            </span>
+          </p>
+        </div>
       </div>
       <div className="text-xl">
         {selected ? <IoIosRadioButtonOn /> : <IoIosRadioButtonOff />}
