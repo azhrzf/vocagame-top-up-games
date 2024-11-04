@@ -1,9 +1,7 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
+import useImageHandler from "@/hooks/useImageHandler";
 import clsx from "clsx";
-import { ProductItem } from "../../../types/Product.types";
+import { ProductItem } from "@/types/Product.types";
 
 interface FlashSaleCardProps {
   product: ProductItem;
@@ -11,7 +9,7 @@ interface FlashSaleCardProps {
 
 const FlashSaleCard = ({ product }: FlashSaleCardProps) => {
   const { item, image, name } = product;
-  const [imgSrc, setImgSrc] = useState(image);
+  const { imgSrc, handleImageError } = useImageHandler(image);
 
   const discountValid =
     item.price > item.priceDiscount && item.priceDiscount > 0;
@@ -24,18 +22,16 @@ const FlashSaleCard = ({ product }: FlashSaleCardProps) => {
     return 0;
   };
 
-  const handleImageError = () => {
-    setImgSrc("/assets/images/backgrounds/thumb-1920-1319219.webp");
-  };
-
   return (
     <div className="bg-[#1A1A1A] rounded-lg">
       <div className="p-5 space-x-3 bg-home-card-gardient rounded-lg flex items-center ">
         <Image
-          className="w-14 h-14 rounded-xl"
+          width={56}
+          height={56}
+          className="rounded-xl"
           src={imgSrc}
           onError={handleImageError}
-          alt="Product Image"
+          alt={name}
         />
         <div>
           <p className="font-semibold">{item.name}</p>
@@ -53,10 +49,10 @@ const FlashSaleCard = ({ product }: FlashSaleCardProps) => {
           <div className="flex items-center space-x-2">
             <p>
               <span className={clsx(discountValid && "line-through")}>
-                Rp.{item.price}
+                Rp{item.price}
               </span>
             </p>
-            {discountValid && <p>Rp.{item.priceDiscount}</p>}
+            {discountValid && <p>Rp{item.priceDiscount}</p>}
           </div>
           <p className="text-xs text-end">
             -{discountPercentage().toFixed(2)}%

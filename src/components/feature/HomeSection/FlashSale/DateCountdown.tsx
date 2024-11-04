@@ -9,7 +9,7 @@ const DateCountdown = ({ dateCountdown }: DateCountdown) => {
   return (
     <div className="space-y-3">
       <div className="space-x-3 flex items-center">
-        <h2 className="text-3xl font-semibold">FLASH SALE</h2>
+        <h2 className="text-2xl md:text-3xl font-semibold">FLASH SALE</h2>
         <FlipClockCountdown
           to={dateCountdown}
           renderMap={[false, true, true, true]}

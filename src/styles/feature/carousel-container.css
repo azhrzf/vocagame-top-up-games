@@ -1,0 +1,31 @@
+.embla__xtra {
+  max-width: 48rem;
+  margin: auto;
+  --slide-height: 19rem;
+  --slide-spacing: 1rem;
+  --slide-size: 75%;
+}
+.embla__xtra__viewport {
+  overflow: hidden;
+}
+.embla__xtra__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+.embla__xtra__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 80%;
+  min-width: 0;
+}
+
+.embla__xtra__slide:first-child {
+  margin-left: 1.5rem;
+}
+
+.embla__xtra__slide:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.embla__xtra__slide:last-child {
+  margin-right: 1.5rem;
+}

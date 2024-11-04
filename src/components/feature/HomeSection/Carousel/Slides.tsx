@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useDotButtonCarouselType } from "@/hooks/useDotButtonCarousel";
+import clsx from "clsx";
 
 interface Slide {
   id: number;
@@ -23,9 +24,10 @@ const Slides = ({
   return (
     <>
       <Image
-        className="flex-grow rounded-xl h-[25rem] 4xl:h-full object-cover object-top w-full"
+        className="rounded-xl object-cover object-top w-full overflow-hidden"
         src={`/assets/images/slides/${slide.img}`}
         alt="Your alt text"
+        fill={true}
       />
       {currentIndex && (
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 space-x-2">
@@ -37,9 +39,10 @@ const Slides = ({
               className="py-4"
             >
               <div
-                className={`dot h-1.5 w-14 rounded-sm ${
-                  snapIndex === selectedIndex ? "bg-selected" : ""
-                }`}
+                className={clsx(
+                  "dot h-1.5 w-10 lg:w-14 rounded-sm",
+                  snapIndex === selectedIndex && "bg-selected"
+                )}
               ></div>
             </button>
           ))}

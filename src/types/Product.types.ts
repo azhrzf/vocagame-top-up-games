@@ -3,17 +3,17 @@ export interface Item {
   name: string;
   price: number;
   priceDiscount: number;
-  iconUrl?: string;
+  iconUrl: string;
 }
 
 export interface ProductMeta {
   id: string;
   name: string;
   image: string;
-  publisher?: string;
-  description?: string;
-  category?: string;
-  createdAt?: Date;
+  publisher: string;
+  description: string;
+  category: string;
+  createdAt: Date;
 }
 
 export interface ProductItem extends ProductMeta {

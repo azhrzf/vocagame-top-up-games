@@ -1,0 +1,80 @@
+.bg-home-img {
+  background-image: url("/assets/images/backgrounds/thumb-1920-1319219.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-home-gardient {
+  background-image: url("/assets/images/backgrounds/gradient-rectangle.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-home-wave {
+  background-image: url("/assets/images/graphics/wavy.svg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+}
+
+.bg-home-card-gardient {
+  background: linear-gradient(93.7deg, #282828 0%, #666666 100.16%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-logo-purple {
+  background: linear-gradient(
+    180deg,
+    rgba(168, 91, 174, 0.7) 0%,
+    rgba(168, 91, 174, 0) 100%
+  );
+}
+
+.bg-product-detail-background-gardient {
+  background: linear-gradient(93.7deg, #f3f3f3 0%, #a0a0a0 100.16%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-product-detail-main {
+  background-image: url("/assets/images/backgrounds/product_detail_bg.webp");
+  background-size: cover;
+  background-position: top;
+}
+
+.bg-product-detail-main-ml {
+  background-image: url("/assets/images/backgrounds/product_detail_default_banner_ml.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-product-detail-main-bottom {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  backdrop-filter: blur(18.7591px);
+}
+
+.bg-product-detail-main-bottom {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  backdrop-filter: blur(18.7591px);
+}
+
+.bg-product-detail-main-bottom-item {
+  backdrop-filter: blur(0);
+}
+
+@media screen and (max-width: 768px) {
+  .bg-product-detail-background-gardient {
+    background: linear-gradient(93.7deg, #ffffff 0%, #fbfbfb 100.16%);
+  }
+}
