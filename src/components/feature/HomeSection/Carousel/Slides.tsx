@@ -40,7 +40,7 @@ const Slides = ({
             >
               <div
                 className={clsx(
-                  "dot h-1.5 w-10 lg:w-14 rounded-sm",
+                  "dot h-1.5 w-5 lg:w-14 rounded-sm",
                   snapIndex === selectedIndex && "bg-selected"
                 )}
               ></div>
