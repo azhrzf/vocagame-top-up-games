@@ -11,10 +11,11 @@ import ItemsBanner from "@/components/feature/ProductSection/ProductItems/ItemsB
 import ItemCard from "@/components/feature/ProductSection/ProductItems/ItemCard";
 import UserFormBanner from "@/components/feature/ProductSection/PaymentData/UserFormBanner";
 import UserForm from "@/components/feature/ProductSection/PaymentData/UserForm";
-import PromoSection from "@/components/feature/ProductSection/PaymentData/PromoSection";
+import SearchSelection from "@/components/feature/ProductSection/PaymentData/SearchSelection";
+import PromoButton from "@/components/feature/ProductSection/PaymentData/PromoButton";
 import PaymentMethods from "@/components/feature/ProductSection/PaymentMethods";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import 'react-loading-skeleton/dist/skeleton.css'
+import "react-loading-skeleton/dist/skeleton.css";
 import { Divider } from "antd";
 
 const ProductDetailPage = () => {
@@ -91,8 +92,12 @@ const ProductDetailPage = () => {
                 </div>
               )}
               {currentProduct ? (
-                <div className="bg-[#282828] p-6 rounded-xl space-y-6">
-                  <PromoSection />
+                <div className="bg-[#282828] p-6 rounded-xl space-y-4">
+                  <SearchSelection
+                    searchPlaceholder="Ketik kode promo (optional)"
+                    buttonPlaceholder="Gunakan"
+                  />
+                  <PromoButton />
                 </div>
               ) : (
                 <div className="rounded-xl">

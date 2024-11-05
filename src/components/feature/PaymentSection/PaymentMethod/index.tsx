@@ -20,7 +20,7 @@ const PaymentMethod = ({ ...method }: PaymentMethodProps) => {
       </div>
       <div className="w-full bg-white rounded-xl">
         <Image
-          src="/assets/images/payments/qr_code_handler.png"
+          src="/assets/images/payments/qr-code-handler.png"
           alt="Dana QRIS"
           width={300}
           height={300}

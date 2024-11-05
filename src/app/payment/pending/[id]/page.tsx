@@ -47,6 +47,7 @@ const PaymentPendingPage = () => {
                 user={{
                   id: "1",
                   username: "SilverWolf",
+                  phoneNumber: "099933334444"
                 }}
                 product={{
                   id: "string",

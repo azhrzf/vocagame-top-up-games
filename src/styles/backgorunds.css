@@ -40,13 +40,13 @@
 }
 
 .bg-product-detail-main {
-  background-image: url("/assets/images/backgrounds/product_detail_bg.webp");
+  background-image: url("/assets/images/backgrounds/product-detail-bg.webp");
   background-size: cover;
   background-position: top;
 }
 
 .bg-product-detail-main-ml {
-  background-image: url("/assets/images/backgrounds/product_detail_default_banner_ml.webp");
+  background-image: url("/assets/images/backgrounds/product-detail-default-banner_ml.webp");
   background-size: cover;
   background-position: center;
 }
@@ -60,17 +60,19 @@
   backdrop-filter: blur(18.7591px);
 }
 
-.bg-product-detail-main-bottom {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.15) 100%
-  );
-  backdrop-filter: blur(18.7591px);
-}
-
 .bg-product-detail-main-bottom-item {
   backdrop-filter: blur(0);
+}
+
+.bg-track-order-banner {
+  background: linear-gradient(45deg, #ffffff, #c0c0c0);
+}
+
+.bg-track-order-banner-img {
+  background-image: url("/assets/images/backgrounds/hylos.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top 15px right;
 }
 
 @media screen and (max-width: 768px) {

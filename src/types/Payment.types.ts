@@ -3,6 +3,7 @@ import { ProductItem } from "./Product.types";
 export interface User {
   id: string;
   username: string;
+  phoneNumber: string;
 }
 
 export interface PaymentMethod {

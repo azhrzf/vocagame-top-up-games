@@ -7,10 +7,23 @@ export function formatPrice(number: number): string {
   return new Intl.NumberFormat("id-ID").format(number);
 }
 
-export function formatDate(date: Date): string {
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const year = date.getFullYear();
+export function formatDate(date: Date, complete = false): string {
+  const simpleDate = date.toLocaleDateString("id-ID", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
 
-  return `${day}/${month}/${year}`;
+  const completeDate = date.toLocaleDateString("id-ID", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+
+  const completeTime = date.toLocaleTimeString("id-ID", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return complete ? `${completeDate}, ${completeTime}` : simpleDate;
 }
