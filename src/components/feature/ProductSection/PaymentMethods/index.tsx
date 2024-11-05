@@ -20,11 +20,12 @@ const PaymentMethods = ({
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {qris.map((item) => {
-            const isSelected = item.name === selectedPaymentMethod;
+            const isSelected = item.id === selectedPaymentMethod;
             return (
               <button
+                type="button"
                 key={item.id}
-                onClick={() => setSelectedPaymentMethod(item.name)}
+                onClick={() => setSelectedPaymentMethod(item.id)}
               >
                 <MethodCard {...item} selected={isSelected} />
               </button>
@@ -39,11 +40,12 @@ const PaymentMethods = ({
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {ewallets.map((item) => {
-            const isSelected = item.name === selectedPaymentMethod;
+            const isSelected = item.id === selectedPaymentMethod;
             return (
               <button
+                type="button"
                 key={item.id}
-                onClick={() => setSelectedPaymentMethod(item.name)}
+                onClick={() => setSelectedPaymentMethod(item.id)}
               >
                 <MethodCard {...item} selected={isSelected} />
               </button>

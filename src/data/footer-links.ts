@@ -1,37 +1,37 @@
 export const siteMap = [
   {
     title: "Beranda",
-    link: "/",
+    link: "https://azhrzf.my.id/",
   },
   {
     title: "Semua Game",
-    link: "/",
+    link: "https://azhrzf.my.id/",
   },
   {
     title: "Masuk",
-    link: "/",
+    link: "https://azhrzf.my.id/",
   },
   {
     title: "Daftar",
-    link: "/",
+    link: "https://azhrzf.my.id/",
   },
 ];
 
 export const otherTopUp = [
   {
     title: "Mobile Legends",
-    link: "/",
+    link: "https://azhrzf.my.id/",
   },
   {
     title: "Free Fire",
-    link: "/",
+    link: "https://azhrzf.my.id/",
   },
   {
     title: "Pubg Mobile",
-    link: "/",
+    link: "https://azhrzf.my.id/",
   },
   {
     title: "Undawn",
-    link: "/",
+    link: "https://azhrzf.my.id/",
   },
 ];

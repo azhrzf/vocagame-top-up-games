@@ -71,9 +71,9 @@ const Footer = () => {
         <Link href="/" className="text-sm md:text-base">
           © PT BERMAIN BERSAMA INDONESIA, {new Date().getFullYear()}
         </Link>
-        <Link href="/" className="hidden md:block">Kebijakan Privasi</Link>
-        <Link href="/" className="hidden md:block">Terms of Service</Link>
-        <Link href="/" className="hidden md:block">Hubungi Kami</Link>
+        <Link href="https://azhrzf.my.id/" className="hidden md:block">Kebijakan Privasi</Link>
+        <Link href="https://azhrzf.my.id/" className="hidden md:block">Terms of Service</Link>
+        <Link href="https://azhrzf.my.id/" className="hidden md:block">Hubungi Kami</Link>
       </div>
     </ScreenContainer>
   );

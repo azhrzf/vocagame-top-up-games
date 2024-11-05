@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { Invoice } from "@/types/Payment.types";
-import { formatPrice, formatDate } from "@/utils/helpers";
+import useImageHandler from "@/hooks/useImageHandler";
+import { formatPrice } from "@/utils/helpers";
+import { format } from "date-fns";
+import { id } from "date-fns/locale";
 
 const OrderItemCard = ({ ...invoice }: Invoice) => {
   const { product, paymentMethod, createdAt } = invoice;
@@ -9,11 +12,18 @@ const OrderItemCard = ({ ...invoice }: Invoice) => {
   const validPrice = priceDiscount > 0 ? priceDiscount : price;
   const totalPayment = validPrice + paymentMethod.serviceFee;
 
+  const { imgSrc, handleImageError } = useImageHandler(product.image);
+
+  const formattedDate = format(new Date(createdAt), "dd MMMM yyyy", {
+    locale: id,
+  });
+
   return (
     <div className="grid grid-cols-2 gap-4 lg:flex lg:justify-between items-center">
       <div className="col-span-2 flex items-center space-x-4">
         <Image
-          src="/assets/images/backgrounds/bg-handler.webp"
+          src={imgSrc}
+          onError={handleImageError}
           width={45}
           height={45}
           alt="game"
@@ -33,12 +43,9 @@ const OrderItemCard = ({ ...invoice }: Invoice) => {
         <p className="font-semibold">{paymentMethod.name}</p>
       </div>
       <div>
-        <p className="text-[#A1A1A1] text-sm">Tanggal</p>
-        <p className="font-semibold">{formatDate(createdAt, true)}</p>
+        <p className="text-[#A1A1A1] text-sm">Tanggal Pembelian</p>
+        <p className="font-semibold">{formattedDate}</p>
       </div>
-      <button className="bg-[#263828] text-[#95BF00] py-1 px-5 rounded-lg">
-        Success
-      </button>
     </div>
   );
 };

@@ -2,20 +2,24 @@
 
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { redirect } from "next/navigation";
 
 interface PaymentCountdownProps {
   onRendered?: () => void;
+  invoiceId: string;
 }
 
-const PaymentCountdown = ({ onRendered }: PaymentCountdownProps) => {
+const PaymentCountdown = ({ onRendered, invoiceId }: PaymentCountdownProps) => {
   const [seconds, setSeconds] = useState(5);
 
   useEffect(() => {
     if (seconds > 0) {
       const timer = setTimeout(() => setSeconds(seconds - 1), 1000);
       return () => clearTimeout(timer);
+    } else {
+      redirect(`/payment/success/${invoiceId}`);
     }
-  }, [seconds]);
+  }, [seconds, invoiceId]);
 
   useEffect(() => {
     if (onRendered) {

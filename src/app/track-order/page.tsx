@@ -1,42 +1,15 @@
+"use client";
+
+import { useInvoicesStore } from "@/stores/useInvoicesStore";
 import ScreenContainer from "@/components/layout/ScreenContainer";
 import Banner from "@/components/feature/TrackOrderSection/Banner";
 import SearchSelection from "@/components/feature/ProductSection/PaymentData/SearchSelection";
 import OrderItemCard from "@/components/feature/TrackOrderSection/OrderItemCard";
+import NotFound from "@/components/layout/NotFound";
 
 const TrackOrderPage = () => {
-  const invoice = {
-    id: "1",
-    zoneId: "1",
-    uniqueCode: "123910293132",
-    user: {
-      id: "1",
-      username: "SilverWolf",
-      phoneNumber: "021311123111",
-    },
-    product: {
-      id: "string",
-      name: "string",
-      image: "/assets/images/backgrounds/bg-handler.webp",
-      publisher: "string",
-      description: "string",
-      category: "string",
-      createdAt: new Date("2025-12-31T23:59:59"),
-      item: {
-        id: "string",
-        name: "string",
-        price: 4000,
-        priceDiscount: 3500,
-        iconUrl: "/assets/images/backgrounds/bg-handler.webp",
-      },
-    },
-    paymentMethod: {
-      id: 1,
-      name: "Dana",
-      image: "/assets/images/payments/dana.png",
-      serviceFee: 200,
-    },
-    createdAt: new Date("2025-12-31T23:59:59"),
-  };
+  const invoices = useInvoicesStore((state) => state.invoices);
+
   return (
     <div className="flex-grow bg-[#1A1A1A] py-10">
       <ScreenContainer className="mx-auto space-y-6">
@@ -59,8 +32,14 @@ const TrackOrderPage = () => {
           <h3 className="text-2xl font-semibold font-['Space_Grotesk']">
             Riwayat Pesanan
           </h3>
-          <div className="bg-[#282828] p-6 space-y-4 rounded-lg">
-            <OrderItemCard {...invoice} />
+          <div className="bg-[#282828] p-6 space-y-4 rounded-lg mx-auto">
+            {invoices.length > 0 ? (
+              invoices.map((invoice) => (
+                <OrderItemCard key={invoice.id} {...invoice} />
+              ))
+            ) : (
+              <NotFound message="Tidak ada riwayat pesanan" />
+            )}
           </div>
         </div>
       </ScreenContainer>

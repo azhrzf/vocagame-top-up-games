@@ -1,43 +1,58 @@
+import { PaymentMethod } from "@/types/Payment.types";
+
 export const vocaCredit = [
   {
-    id: 1,
+    id: "voca-credit-1",
     name: "VocaCredit",
+    image: "qris.png",
     serviceFee: 1500,
+    type: "voca-credit",
   },
 ];
 
 export const qris = [
   {
-    id: 1,
+    id: "qris-1",
     name: "QRIS",
     image: "qris.png",
     serviceFee: 1500,
+    type: "qris",
   },
 ];
 
 export const ewallets = [
   {
-    id: 1,
+    id: "ewallet-1",
     name: "DANA",
     image: "dana.png",
     serviceFee: 1500,
+    type: "ewallet",
   },
   {
-    id: 2,
+    id: "ewallet-2",
     name: "OVO",
     image: "ovo.png",
     serviceFee: 1500,
+    type: "ewallet",
   },
   {
-    id: 3,
+    id: "ewallet-3",
     name: "LinkAja",
     image: "linkaja.png",
     serviceFee: 1500,
+    type: "ewallet",
   },
   {
-    id: 4,
+    id: "ewallet-4",
     name: "Shopee Pay",
     image: "shopeepay.png",
     serviceFee: 1500,
+    type: "ewallet",
   },
+];
+
+export const allPaymentMethods: PaymentMethod[] = [
+  ...vocaCredit,
+  ...qris,
+  ...ewallets,
 ];

@@ -7,18 +7,30 @@ export interface User {
 }
 
 export interface PaymentMethod {
-  id: number;
+  id: string;
   name: string;
   image: string;
   serviceFee: number;
+  type: string;
 }
 
-export interface Invoice {
+export interface InvoiceOrder {
+  userId: string;
+  userPhoneNumber: string;
+  zoneId: string;
+  paymentMethodId: string;
+  product: ProductItem;
+}
+
+export interface InvoiceMetadata {
   id: string;
   zoneId: string;
-  uniqueCode: string;
   user: User;
   product: ProductItem;
   paymentMethod: PaymentMethod;
+}
+
+export interface Invoice extends InvoiceMetadata {
+  uniqueCode: string;
   createdAt: Date;
 }

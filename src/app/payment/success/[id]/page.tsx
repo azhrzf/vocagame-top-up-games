@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
 import { useInvoicesStore } from "@/stores/useInvoicesStore";
-import PaymentCountdown from "@/components/feature/PaymentSection/PaymentCountdown";
 import PaymentMethodSkeleton from "../../PaymentMethodSkeleton";
 
 const PaymentPendingPage = () => {
@@ -15,19 +14,22 @@ const PaymentPendingPage = () => {
     notFound();
   }
 
-  const [isCountdownRendered, setIsCountdownRendered] = useState(false);
-
-  const handleCountdownRendered = () => {
-    setIsCountdownRendered(true);
-  };
-
   return (
     <div className="transition ease-in-out duration-500">
-      <PaymentCountdown
-        onRendered={handleCountdownRendered}
-        invoiceId={invoiceId}
-      />
-      {!isCountdownRendered && <PaymentMethodSkeleton />}
+      {currentInvoice ? (
+        <div className="bg-[#202020] flex flex-col items-center py-5 px-5 rounded-xl space-y-3">
+          <h2 className="uppercase font-semibold text-xl">Pembayaran Sukses</h2>
+          <p className="text-[#A1A1A1] text-xs">Terimakasih sudah membeli</p>
+          <Link
+            href={`/invoice/${invoiceId}`}
+            className="bg-[#282828] rounded-3xl py-2 px-4 text-sm"
+          >
+            Lihat Invoice
+          </Link>
+        </div>
+      ) : (
+        <PaymentMethodSkeleton />
+      )}
     </div>
   );
 };

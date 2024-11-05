@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useParams, notFound } from "next/navigation";
+import { useInvoicesStore } from "@/stores/useInvoicesStore";
 import ItemHeader from "@/components/feature/InvoiceSection/ItemHeader";
 import ItemMetadata from "@/components/feature/PaymentSection/ProductItemDetail/ItemMetadata";
 import ItemDetail from "@/components/feature/PaymentSection/ProductItemDetail/ItemDetail";
@@ -9,40 +11,15 @@ import ReviewSection from "@/components/feature/InvoiceSection/ReviewSection";
 import { Divider } from "antd";
 
 const InvoicePage = () => {
-  const invoice = {
-    id: "1",
-    zoneId: "1",
-    uniqueCode: "123910293132",
-    user: {
-      id: "1",
-      username: "SilverWolf",
-      phoneNumber: "021311123111"
-    },
-    product: {
-      id: "string",
-      name: "string",
-      image: "/assets/images/backgrounds/bg-handler.webp",
-      publisher: "string",
-      description: "string",
-      category: "string",
-      createdAt: new Date("2025-12-31T23:59:59"),
-      item: {
-        id: "string",
-        name: "string",
-        price: 4000,
-        priceDiscount: 3500,
-        iconUrl: "/assets/images/backgrounds/bg-handler.webp",
-      },
-    },
-    paymentMethod: {
-      id: 1,
-      name: "Dana",
-      image: "/assets/images/payments/dana.png",
-      serviceFee: 200,
-    },
-    createdAt: new Date("2025-12-31T23:59:59"),
-  };
-  const { id, product, paymentMethod } = invoice;
+  const { id: invoiceId } = useParams<{ id: string }>();
+  const invoices = useInvoicesStore((state) => state.invoices);
+  const currentInvoice = invoices.find((invoice) => invoice.id === invoiceId);
+
+  if (!currentInvoice) {
+    notFound();
+  }
+
+  const { id, product, paymentMethod } = currentInvoice;
 
   const { price, priceDiscount } = product.item;
   const validPrice = priceDiscount > 0 ? priceDiscount : price;
@@ -65,7 +42,7 @@ const InvoicePage = () => {
           </div>
           <Divider className="border border-[#3E3E3E] mb-3" />
           <div className="px-6">
-            <ItemDetail invoice={invoice} />
+            <ItemDetail invoice={currentInvoice} />
           </div>
           <div className="py-5 px-6 bg-[#009F11]">
             <ItemFooter totalPayment={totalPayment} theme="green" />
@@ -73,7 +50,7 @@ const InvoicePage = () => {
         </div>
         <div className="px-6 py-8 space-y-4 bg-[#282828] rounded-lg">
           <ReviewSection />
-          <button className="border border-white w-full text-center py-3 px-5 rounded-lg">
+          <button type="button" className="border border-white w-full text-center py-3 px-5 rounded-lg">
             Tambahkan Ulasan
           </button>
         </div>

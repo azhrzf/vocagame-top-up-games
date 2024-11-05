@@ -7,7 +7,14 @@ export function formatPrice(number: number): string {
   return new Intl.NumberFormat("id-ID").format(number);
 }
 
-export function formatDate(date: Date, complete = false): string {
+export function getUniqueTime(): string {
+  const date = new Date();
+  return date.getTime().toString();
+}
+
+export function formatDate(dateInput: string | Date, complete = false): string {
+  const date = typeof dateInput === "string" ? new Date(dateInput) : dateInput;
+
   const simpleDate = date.toLocaleDateString("id-ID", {
     day: "2-digit",
     month: "2-digit",

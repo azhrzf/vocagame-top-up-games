@@ -15,7 +15,7 @@ const ItemCurrencyButton = ({
   return (
     <>
       <div className="grid grid-cols-2 lg:hidden bg-[#1A1A1A] rounded-xl overflow-hidden">
-        <button className=" py-3 flex items-center justify-center space-x-2 border-b-2 border-white">
+        <button type="button" className=" py-3 flex items-center justify-center space-x-2 border-b-2 border-white">
           <Image
             src={imgSrc}
             onError={handleImageError}
@@ -26,7 +26,7 @@ const ItemCurrencyButton = ({
           <p className="font-semibold text-sm">{currencyName}</p>
         </button>
       </div>
-      <button className="hidden lg:block border-2 rounded-xl p-0.5">
+      <button type="button" className="hidden lg:block border-2 rounded-xl p-0.5">
         <div className="px-3.5 py-2.5 flex items-center space-x-2 border-white">
           <Image
             src={imgSrc}

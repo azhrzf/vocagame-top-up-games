@@ -1,30 +1,34 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import dynamic from "next/dynamic";
+import { useParams, redirect } from "next/navigation";
+import { useForm } from "react-hook-form";
 import { useProductsStore } from "@/stores/useProductsStore";
-import { Product } from "@/types/Product.types";
+import { useInvoicesStore } from "@/stores/useInvoicesStore";
+import { Product, Item } from "@/types/Product.types";
+import { InvoiceOrder, PaymentMethod } from "@/types/Payment.types";
+import { allPaymentMethods } from "@/data/payment-methods";
+import { getUniqueTime } from "@/utils/helpers";
 import ScreenContainer from "@/components/layout/ScreenContainer";
 import ProductBanner from "@/components/feature/ProductSection/ProductBanner";
-import ItemCurrencyButton from "@/components/feature/ProductSection/ProductItems/ItemCurrencyButton";
-import ItemsBanner from "@/components/feature/ProductSection/ProductItems/ItemsBanner";
-import ItemCard from "@/components/feature/ProductSection/ProductItems/ItemCard";
-import UserFormBanner from "@/components/feature/ProductSection/PaymentData/UserFormBanner";
-import UserForm from "@/components/feature/ProductSection/PaymentData/UserForm";
-import SearchSelection from "@/components/feature/ProductSection/PaymentData/SearchSelection";
-import PromoButton from "@/components/feature/ProductSection/PaymentData/PromoButton";
-import PaymentMethods from "@/components/feature/ProductSection/PaymentMethods";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ItemSection from "./ItemSection";
+import MergeUserForm from "./MergeUserForm";
+import SearchPromoSection from "./SearchPromoSection";
+import PaymentMethodsSection from "./PaymentMethodsSection";
+import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Divider } from "antd";
+
+const SubmitButton = dynamic(() => import("./SubmitButton"), { ssr: false });
 
 const ProductDetailPage = () => {
   const { id: productId } = useParams();
   const products = useProductsStore((state) => state.products);
   const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
-  const [selectedItemId, setSelectedItemId] = useState("");
+  const [selectedItemId, setSelectedItemId] = useState("1");
 
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [selectedPaymentMethod, setSelectedPaymentMethod] =
+    useState("ewallet-1");
 
   useEffect(() => {
     if (products.length > 0) {
@@ -37,87 +41,94 @@ const ProductDetailPage = () => {
     }
   }, [products, productId]);
 
+  const addInvoice = useInvoicesStore((state) => state.addInvoice);
+  const { register, handleSubmit, formState } = useForm<InvoiceOrder>({
+    defaultValues: {
+      userId: "",
+      userPhoneNumber: "",
+      zoneId: "",
+      paymentMethodId: "ewallet-1",
+    },
+  });
+
+  const onSubmit = (data: InvoiceOrder) => {
+    if (currentProduct) {
+      const newId = `ID-${getUniqueTime()}`;
+      const { items, ...selectedProduct } = currentProduct;
+      const selectedItem = items.find(
+        (item: Item) => item.id === selectedItemId
+      ) as Item;
+      const usedPaymentMethod = allPaymentMethods.find(
+        (method) => method.id === selectedPaymentMethod
+      ) as PaymentMethod;
+      addInvoice({
+        id: newId,
+        zoneId: data.zoneId,
+        user: {
+          id: data.userId,
+          username: "SilverWolf",
+          phoneNumber: data.userPhoneNumber,
+        },
+        product: {
+          ...selectedProduct,
+          item: selectedItem,
+        },
+        paymentMethod: usedPaymentMethod,
+      });
+      redirect(`/payment/pending/${newId}`);
+    }
+  };
+
+  const submitData = handleSubmit(onSubmit);
+
   return (
     <section className="bg-[#1A1A1A] flex-grow pb-20">
       <div className="h-[41rem] lg:h-52 bg-product-detail-background-gardient mb-auto"></div>
       <ProductBanner product={currentProduct} />
       <ScreenContainer className="mx-auto mt-10">
         <SkeletonTheme baseColor="#282828" highlightColor="#444">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-            {currentProduct ? (
-              <div className="block lg:hidden bg-[#282828] p-6 rounded-xl space-y-6">
-                <UserFormBanner />
-                <UserForm />
-              </div>
-            ) : (
-              <div className="block lg:hidden">
-                <Skeleton height={400} className="w-full rounded-xl" />
-              </div>
-            )}
-            {currentProduct ? (
-              <div className="lg:col-span-7 h-min bg-[#282828] rounded-xl">
-                <ItemsBanner>
-                  <ItemCurrencyButton image={currentProduct.items[0].iconUrl} />
-                  <Divider className="hidden lg:block border border-[#3E3E3E] mb-3" />
-                  <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
-                    {currentProduct.items.map((item) => {
-                      const isSelected = item.id === selectedItemId;
-                      return (
-                        <div
-                          key={item.id}
-                          onClick={() => setSelectedItemId(item.id)}
-                        >
-                          <ItemCard selected={isSelected} {...item} />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </ItemsBanner>
-              </div>
-            ) : (
-              <div className="lg:col-span-7 w-full rounded-xl overflow-hidden">
-                <Skeleton height={300} className="hidden lg:block w-full" />
-              </div>
-            )}
-            <div className="lg:col-span-5 space-y-4">
-              {currentProduct ? (
-                <div className="hidden lg:block bg-[#282828] p-6 rounded-xl space-y-6">
-                  <UserFormBanner />
-                  <Divider className="hidden lg:block border border-[#3E3E3E]" />
-                  <UserForm />
-                </div>
-              ) : (
-                <div className="hidden lg:block">
-                  <Skeleton height={500} className="w-full rounded-xl" />
-                </div>
-              )}
-              {currentProduct ? (
-                <div className="bg-[#282828] p-6 rounded-xl space-y-4">
-                  <SearchSelection
-                    searchPlaceholder="Ketik kode promo (optional)"
-                    buttonPlaceholder="Gunakan"
-                  />
-                  <PromoButton />
-                </div>
-              ) : (
-                <div className="rounded-xl">
-                  <Skeleton height={100} className="w-full" />
-                </div>
-              )}
-              {currentProduct ? (
-                <div className="bg-[#282828] p-6 rounded-xl space-y-6">
-                  <PaymentMethods
-                    selectedPaymentMethod={selectedPaymentMethod}
-                    setSelectedPaymentMethod={setSelectedPaymentMethod}
-                  />
-                </div>
-              ) : (
-                <div className="rounded-xl">
-                  <Skeleton height={1000} className="w-full rounded-xl" />
-                </div>
-              )}
+          <form
+            onSubmit={submitData}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-5"
+          >
+            <div className="hidden lg:block lg:col-span-7 h-min bg-[#282828] rounded-xl">
+              <ItemSection
+                currentProduct={currentProduct}
+                selectedItemId={selectedItemId}
+                setSelectedItemId={setSelectedItemId}
+              />
             </div>
-          </div>
+            <div className="lg:col-span-5 space-y-4">
+              <div className="bg-[#282828] p-6 rounded-xl space-y-6">
+                <MergeUserForm
+                  register={register}
+                  formState={formState}
+                  currentProduct={currentProduct}
+                />
+              </div>
+              <div className="block lg:hidden bg-[#282828] rounded-xl">
+                <ItemSection
+                  currentProduct={currentProduct}
+                  selectedItemId={selectedItemId}
+                  setSelectedItemId={setSelectedItemId}
+                />
+              </div>
+              <div className="bg-[#282828] p-6 rounded-xl space-y-4">
+                <SearchPromoSection currentProduct={currentProduct} />
+              </div>
+              <div className="bg-[#282828] p-6 rounded-xl space-y-6">
+                <PaymentMethodsSection
+                  currentProduct={currentProduct}
+                  selectedPaymentMethod={selectedPaymentMethod}
+                  setSelectedPaymentMethod={setSelectedPaymentMethod}
+                />
+              </div>
+              <SubmitButton
+                currentProduct={currentProduct}
+                submitData={submitData}
+              />
+            </div>
+          </form>
         </SkeletonTheme>
       </ScreenContainer>
     </section>
