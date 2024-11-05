@@ -12,7 +12,9 @@ const MobileHeader = () => {
           <h1 className="font-bold">GameManiac</h1>
         </Link>
         <div className="flex items-center space-x-4">
-          <IoSearch />
+          <Link href="/track-order">
+            <IoSearch />
+          </Link>
           <IoMenu />
         </div>
       </ScreenContainer>

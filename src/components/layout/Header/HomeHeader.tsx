@@ -17,7 +17,9 @@ const HomeHeader = () => {
           <h1 className="font-bold">GameManiac</h1>
         </Link>
         <div className="flex items-center space-x-4">
-          <IoSearch />
+          <Link href="/track-order">
+            <IoSearch />
+          </Link>
           <div className="space-x-4">
             <Divider type="vertical" className="border-[#3E3E3E] h-7" />
             <Divider type="vertical" className="border-[#3E3E3E] h-7" />

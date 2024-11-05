@@ -25,7 +25,7 @@ const PatmentPageLayout = ({ children }: { children: ReactNode }) => {
       <ScreenContainer className="mx-auto grid grid-cols-1 lg:grid-cols-12 gap-5">
         <SkeletonTheme baseColor="#282828" highlightColor="#444">
           <div className="lg:col-span-4">
-            {children}
+            {currentInvoice && children}
             {currentInvoice ? (
               <div className="mt-5">
                 <PaymentMethod {...currentInvoice.paymentMethod} />

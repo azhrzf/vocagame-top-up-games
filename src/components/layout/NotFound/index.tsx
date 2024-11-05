@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const NotFound = ({ message }: { message: string }) => {
   return (
-    <div className="flex flex-col self-center space-y-4">
+    <div className="w-full flex flex-col items-center justify-center space-y-4">
       <Image
         src="/assets/images/graphics/not-found.png"
         width={200}

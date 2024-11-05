@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -12,7 +12,9 @@ interface SmallProductBannerProps {
 }
 
 const SmallProductBanner = ({ product }: SmallProductBannerProps) => {
-  const [imgSrc, setImgSrc] = useState("/assets/images/backgrounds/bg-handler.webp");
+  const [imgSrc, setImgSrc] = useState(
+    "/assets/images/backgrounds/bg-handler.webp"
+  );
 
   useEffect(() => {
     if (product) {
@@ -26,20 +28,20 @@ const SmallProductBanner = ({ product }: SmallProductBannerProps) => {
 
   return (
     <div className="flex flex-col items-center mt-8 space-y-3">
-      <div className="w-48 h-48">
-        {product ? (
-          <Image
-            className="rounded-2xl"
-            src={imgSrc}
-            onError={handleImageError}
-            alt={product.name}
-            width={64}
-            height={64}
-          />
-        ) : (
+      {product ? (
+        <Image
+          className="rounded-2xl"
+          src={imgSrc}
+          onError={handleImageError}
+          alt={product.name}
+          width={225}
+          height={225}
+        />
+      ) : (
+        <div className="w-48 h-48">
           <Skeleton className="w-full h-full" />
-        )}
-      </div>
+        </div>
+      )}
       {product ? (
         <p className="text-xs px-3 py-1 bg-[#EAEAEA] font-semibold rounded-3xl">
           GameManiac.com

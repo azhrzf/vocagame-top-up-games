@@ -79,4 +79,10 @@
   .bg-product-detail-background-gardient {
     background: linear-gradient(93.7deg, #ffffff 0%, #fbfbfb 100.16%);
   }
+
+  .bg-track-order-banner-img {
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: bottom right;
+  }
 }

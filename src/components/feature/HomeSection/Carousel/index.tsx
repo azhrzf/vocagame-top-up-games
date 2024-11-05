@@ -27,7 +27,7 @@ const EmblaCarousel: React.FC<CarouselProps> = ({ slides, options }) => {
   return (
     <section className="embla overflow-hidden space-y-5 w-full">
       <div className="min-h-60 lg:min-h-[25rem] overflow-hidden" ref={emblaRef}>
-        <div className="flex items-center touch-pan-y touch-pinch-zoom h-full">
+        <div className="px-6 lg:px-0 flex items-center touch-pan-y touch-pinch-zoom h-full">
           {slides.map((slide, index) => {
             return (
               <ScreenContainer

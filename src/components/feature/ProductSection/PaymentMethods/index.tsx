@@ -1,4 +1,4 @@
-import { qris, ewallets } from "@/data/payment-methods";
+import { vocaCredit, qris, ewallets } from "@/data/payment-methods";
 import MethodCard from "./MethodCard";
 import { IoIosArrowUp } from "react-icons/io";
 
@@ -13,6 +13,20 @@ const PaymentMethods = ({
 }: PaymentMethodsProps) => {
   return (
     <>
+      <div className="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-3">
+        {vocaCredit.map((item) => {
+          const isSelected = item.id === selectedPaymentMethod;
+          return (
+            <button
+              type="button"
+              key={item.id}
+              onClick={() => setSelectedPaymentMethod(item.id)}
+            >
+              <MethodCard {...item} selected={isSelected} />
+            </button>
+          );
+        })}
+      </div>
       <div className="space-y-6">
         <div className="cursor-pointer flex items-center justify-between p-5 rounded-lg bg-[#3D3D3D]">
           <p className="text-semibold">QRIS</p>

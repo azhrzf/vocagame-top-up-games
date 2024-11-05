@@ -4,7 +4,7 @@ export const vocaCredit = [
   {
     id: "voca-credit-1",
     name: "VocaCredit",
-    image: "qris.png",
+    image: "voca.png",
     serviceFee: 1500,
     type: "voca-credit",
   },

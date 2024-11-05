@@ -19,8 +19,8 @@ const OrderItemCard = ({ ...invoice }: Invoice) => {
   });
 
   return (
-    <div className="grid grid-cols-2 gap-4 lg:flex lg:justify-between items-center">
-      <div className="col-span-2 flex items-center space-x-4">
+    <div className="grid grid-cols-2 lg:grid-cols-12 gap-4 items-center">
+      <div className="col-span-2 lg:col-span-3 flex items-center space-x-4">
         <Image
           src={imgSrc}
           onError={handleImageError}
@@ -34,15 +34,15 @@ const OrderItemCard = ({ ...invoice }: Invoice) => {
           <p className="font-semibold">{product.item.name}</p>
         </div>
       </div>
-      <div>
+      <div className="lg:col-span-3">
         <p className="text-[#A1A1A1] text-sm">Harga Produk</p>
         <p className="font-semibold">Rp{formatPrice(totalPayment)},-</p>
       </div>
-      <div>
+      <div className="lg:col-span-3">
         <p className="text-[#A1A1A1] text-sm">Metode Pembayaran</p>
         <p className="font-semibold">{paymentMethod.name}</p>
       </div>
-      <div>
+      <div className="lg:col-span-3">
         <p className="text-[#A1A1A1] text-sm">Tanggal Pembelian</p>
         <p className="font-semibold">{formattedDate}</p>
       </div>
