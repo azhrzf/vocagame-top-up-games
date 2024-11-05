@@ -7,7 +7,7 @@ import ProductFooter from "./ProductFooter";
 const BelowFooter = () => {
   const pathname = usePathname();
 
-  return pathname === "/product" ? <ProductFooter /> : <DefaultLinks />;
+  return pathname.includes("/product") ? <ProductFooter /> : <DefaultLinks />;
 };
 
 export default BelowFooter;
