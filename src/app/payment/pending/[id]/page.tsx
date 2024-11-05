@@ -10,7 +10,7 @@ import CustomerService from "@/components/feature/PaymentSection/CustomerService
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-const PaymentPage = () => {
+const PaymentPendingPage = () => {
   const [isCountdownRendered, setIsCountdownRendered] = useState(false);
 
   const handleCountdownRendered = () => {
@@ -85,4 +85,4 @@ const PaymentPage = () => {
   );
 };
 
-export default PaymentPage;
+export default PaymentPendingPage;
